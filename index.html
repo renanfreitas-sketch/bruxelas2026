@@ -442,7 +442,7 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
   <span style="display:none;color:white;font-weight:800;font-size:16px;letter-spacing:1px">BSCA</span>
   <div class="header-right">
     <span class="header-date">Atualizado em 29/06/2026</span>
-    <span class="header-badge">17 Respostas</span>
+    <span class="header-badge">18 Respostas</span>
   </div>
 </header>
 
@@ -464,32 +464,32 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
     <div class="kpi-card">
       <span class="kpi-icon">🏢</span>
       <div class="kpi-label">Empresas respondentes</div>
-      <div class="kpi-value">17</div>
+      <div class="kpi-value">18</div>
       <div class="kpi-sub">formulários recebidos</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">🤝</span>
       <div class="kpi-label">Contatos realizados</div>
-      <div class="kpi-value">745</div>
+      <div class="kpi-value">775</div>
       <div class="kpi-sub">total no evento</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">✨</span>
       <div class="kpi-label">Novos contatos</div>
-      <div class="kpi-value">479</div>
-      <div class="kpi-sub">64% do total</div>
+      <div class="kpi-value">489</div>
+      <div class="kpi-sub">63% do total</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">💰</span>
       <div class="kpi-label">Negócios no evento</div>
       <div class="kpi-value brown" id="v-evento">—</div>
-      <div class="kpi-sub">estimativa declarada</div>
+      <div class="kpi-sub">em USD · estimativa declarada</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">📈</span>
       <div class="kpi-label">Projeção 12 meses</div>
       <div class="kpi-value brown" id="v-12m">—</div>
-      <div class="kpi-sub">estimativa declarada</div>
+      <div class="kpi-sub">em USD · estimativa declarada</div>
     </div>
   </div>
 
@@ -586,32 +586,33 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
 <script>
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const items = [
-  { e:"Sítio Campestre e Barreiro",    r:"Noêmia Karen de Oliveira", f:"Produtora Rural",          c:10,  n:5,   ev:50000,    m12:150000,   papel:"Relevante",       res:"Igual ao esperado",        inf:"Muito Satisfeito", atd:"Satisfeito",       org:"Satisfeito",       dt:"26/06" },
-  { e:"COCARIVE",                      r:"Wellington Pereira",       f:"Trader",                   c:45,  n:8,   ev:2540000,  m12:13000000, papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Miriam M Aguiar ME",            r:"Miriam Aguiar",            f:"Diretora",                 c:10,  n:7,   ev:100000,   m12:600000,   papel:"Relevante",       res:"Igual ao esperado",        inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Gram Cerri (Lara Massini)",     r:"Lara Cerri Massini",       f:"Exportadora",              c:17,  n:15,  ev:320,      m12:3840,     papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Gram Cerri (Fábio Massini)",    r:"Fábio Augusto Massini",    f:"Proprietário",             c:17,  n:15,  ev:320,      m12:3840,     papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Brown Coffee",                  r:"Renata Vaz",               f:"Trader",                   c:15,  n:6,   ev:100000,   m12:200000,   papel:"Relevante",       res:"Maior que o esperado",     inf:"Satisfeito",       atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
-  { e:"FVAgro Ltda",                   r:"Lucas Venturim",           f:"Sócio Diretor Comercial",  c:18,  n:10,  ev:700000,   m12:1500000,  papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
-  { e:"Fazendas Dutra",                r:"Victoria Dutra",           f:"Vendas e Exportação",      c:40,  n:15,  ev:1000000,  m12:1000000,  papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Sítio Toca da Onça",            r:"Luciana Flores Martins",   f:"CEO",                      c:200, n:190, ev:0,        m12:1800000,  papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Fazenda Cotrim e D'Alessandro", r:"Matheus D'Alessandro",     f:"COO",                      c:150, n:120, ev:1000000,  m12:2000000,  papel:"Muito relevante", res:"Igual ao esperado",        inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Capricornio Coffees",           r:"Otávio Sandrin",           f:"Sales & Ops Manager",      c:60,  n:20,  ev:1000000,  m12:10000000, papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"California Coffee Estates",     r:"Luiz Saldanha",            f:"Proprietário",             c:60,  n:25,  ev:500000,   m12:4000000,  papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"São Luiz Estate Coffee",        r:"Ana Cecilia Gondim",       f:"Sócia Comercial",          c:10,  n:8,   ev:2000000,  m12:5000000,  papel:"Relevante",       res:"Abaixo do esperado",       inf:"Indiferente",      atd:"Satisfeito",       org:"Satisfeito",       dt:"28/06" },
-  { e:"São Pedro Coffee",              r:"Warley Carlos de Oliveira",f:"Gerente Comercial",        c:20,  n:15,  ev:0,        m12:25,       papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Uber Representações",           r:"Cláudio Márcio Francisco", f:"Diretor",                  c:30,  n:5,   ev:0,        m12:9000000,  papel:"Muito relevante", res:"Maior que o esperado",     inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"29/06" },
-  { e:"Nutrade Comercial",             r:"Pedro Santos",             f:"Gerente de Negócios",      c:23,  n:5,   ev:0,        m12:2500000,  papel:"Pouco relevante", res:"Igual ao esperado",        inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
-  { e:"Cia. Têxtil de Castanhal",      r:"Flávio Junqueira Smith",   f:"Diretor",                  c:20,  n:10,  ev:500000,   m12:10000000, papel:"Relevante",       res:"Igual ao esperado",        inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
+  { e:"Sítio Campestre e Barreiro",    r:"Noêmia Karen de Oliveira",  f:"Produtora Rural",          c:10,  n:5,   ev:50000,   m12:150000,   papel:"Relevante",       res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Satisfeito",       org:"Satisfeito",       dt:"26/06" },
+  { e:"COCARIVE",                      r:"Wellington Pereira",        f:"Trader",                   c:45,  n:8,   ev:2.54,    m12:13,       papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Miriam M Aguiar ME",            r:"Miriam Aguiar",             f:"Diretora",                 c:10,  n:7,   ev:100,     m12:600,      papel:"Relevante",       res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Gram Cerri (Lara Massini)",     r:"Lara Cerri Massini",        f:"Exportadora",              c:17,  n:15,  ev:320,     m12:38400000, papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Gram Cerri (Fábio Massini)",    r:"Fábio Augusto Massini",     f:"Proprietário",             c:17,  n:15,  ev:320,     m12:3840,     papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Brown Coffee",                  r:"Renata Vaz",                f:"Trader",                   c:15,  n:6,   ev:100000,  m12:200000,   papel:"Relevante",       res:"Maior que o esperado",       inf:"Satisfeito",       atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
+  { e:"FVAgro Ltda",                   r:"Lucas Venturim",            f:"Sócio Diretor Comercial",  c:18,  n:10,  ev:700000,  m12:1500000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
+  { e:"Fazendas Dutra",                r:"Victoria Dutra",            f:"Vendas e Exportação",      c:40,  n:15,  ev:1000000, m12:1000000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Sítio Toca da Onça",            r:"Luciana Flores Martins",    f:"CEO",                      c:200, n:190, ev:0,       m12:1800000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Fazenda Cotrim e D'Alessandro", r:"Matheus D'Alessandro",      f:"COO",                      c:150, n:120, ev:1000000, m12:2000000,  papel:"Muito relevante", res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Capricornio Coffees",           r:"Otávio Sandrin",            f:"Sales & Ops Manager",      c:60,  n:20,  ev:1,       m12:10,       papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"California Coffee Estates",     r:"Luiz Saldanha",             f:"Proprietário",             c:60,  n:25,  ev:500,     m12:4000000,  papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"São Luiz Estate Coffee",        r:"Ana Cecilia Gondim",        f:"Sócia Comercial",          c:10,  n:8,   ev:2000000, m12:5000000,  papel:"Relevante",       res:"Abaixo do esperado",         inf:"Indiferente",      atd:"Satisfeito",       org:"Satisfeito",       dt:"28/06" },
+  { e:"São Pedro Coffee",              r:"Warley Carlos de Oliveira", f:"Gerente Comercial",        c:20,  n:15,  ev:0,       m12:25,       papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
+  { e:"Uber Representações",           r:"Cláudio Márcio Francisco",  f:"Diretor",                  c:30,  n:5,   ev:0,       m12:9000000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"29/06" },
+  { e:"Nutrade Comercial",             r:"Pedro Santos",              f:"Gerente de Negócios",      c:23,  n:5,   ev:0,       m12:2500000,  papel:"Pouco relevante", res:"Igual ao esperado",          inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
+  { e:"SMC Comercial e Exportadora",   r:"Vivian Andrade",            f:"Trader",                   c:30,  n:10,  ev:0,       m12:1000000,  papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"29/06" },
+  { e:"Cia. Têxtil de Castanhal",      r:"Flávio Junqueira Smith",    f:"Diretor",                  c:20,  n:10,  ev:500,     m12:10000000, papel:"Relevante",       res:"Igual ao esperado",          inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
 ];
 
 // ─── KPIs ─────────────────────────────────────────────────────────────────────
 const totalEv  = items.reduce((s,i)=>s+i.ev, 0);
 const total12m = items.reduce((s,i)=>s+i.m12, 0);
 function fmtM(n) {
-  if (n >= 1e6) return `<sup>$</sup>${(n/1e6).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})}M`;
-  if (n >= 1e3) return `<sup>$</sup>${(n/1e3).toFixed(0)}K`;
-  return `<sup>$</sup>${n.toLocaleString('pt-BR')}`;
+  if (n >= 1e6) return `<sup>USD </sup>${(n/1e6).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})}M`;
+  if (n >= 1e3) return `<sup>USD </sup>${(n/1e3).toFixed(0)}K`;
+  return `<sup>USD </sup>${n.toLocaleString('pt-BR')}`;
 }
 document.getElementById('v-evento').innerHTML = fmtM(totalEv);
 document.getElementById('v-12m').innerHTML    = fmtM(total12m);
@@ -630,13 +631,13 @@ new Chart(document.getElementById('chartRole'), {
   type: 'doughnut',
   data: {
     labels:   ['Muito relevante','Relevante','Pouco relevante'],
-    datasets: [{ data:[11,5,1], backgroundColor:[C.green,C.blue,C.gold], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
+    datasets: [{ data:[12,5,1], backgroundColor:[C.green,C.blue,C.gold], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
   },
   options: {
     responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins: {
       legend:  { position:'right' },
-      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/17*100)}%)` } }
+      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/18*100)}%)` } }
     }
   }
 });
@@ -646,25 +647,25 @@ new Chart(document.getElementById('chartExpect'), {
   type: 'doughnut',
   data: {
     labels:   ['Muito maior','Maior','Igual','Abaixo'],
-    datasets: [{ data:[3,8,5,1], backgroundColor:[C.green,C.blue,C.gold,C.red], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
+    datasets: [{ data:[4,8,5,1], backgroundColor:[C.green,C.blue,C.gold,C.red], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
   },
   options: {
     responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins: {
       legend:  { position:'right' },
-      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/17*100)}%)` } }
+      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/18*100)}%)` } }
     }
   }
 });
 
 // ─── SATISFACTION BARS ───────────────────────────────────────────────────────
 const satData = [
-  { label:'Infraestrutura do evento',  ms:13, s:3, i:1, ins:0 },
-  { label:'Atendimento BSCA',          ms:13, s:4, i:0, ins:0 },
-  { label:'Organização do evento',     ms:11, s:6, i:0, ins:0 },
-  { label:'Ambiente de negócios',      ms:9,  s:7, i:1, ins:0 },
+  { label:'Infraestrutura do evento',  ms:14, s:3, i:1, ins:0 },
+  { label:'Atendimento BSCA',          ms:14, s:4, i:0, ins:0 },
+  { label:'Organização do evento',     ms:13, s:5, i:0, ins:0 },
+  { label:'Ambiente de negócios',      ms:11, s:6, i:1, ins:0 },
 ];
-const N = 17;
+const N = 18;
 const satBars = document.getElementById('satBars');
 satData.forEach(d => {
   const p = v => (v/N*100).toFixed(0);
@@ -689,7 +690,7 @@ new Chart(document.getElementById('chartContacts'), {
   data: {
     labels: ['Compradores Diretos','Distribuidores','Comerciais Exportadoras','Outros','Atacadistas'],
     datasets: [{
-      data: [14,12,8,2,0],
+      data: [15,13,9,2,0],
       backgroundColor: [C.green,C.greenL,C.brown,C.gold,'#ddd'],
       borderRadius: 6,
       borderSkipped: false,
@@ -718,8 +719,8 @@ const mini = (id, data, colors, labels) => new Chart(document.getElementById(id)
     }
   }
 });
-mini('chartStrategy', [6,11], [C.red, C.green],  ['Sim','Não']);
-mini('chartCase',     [13,4], [C.green, C.gold],  ['Sim','Não']);
+mini('chartStrategy', [7,11], [C.red, C.green],  ['Sim','Não']);
+mini('chartCase',     [14,4], [C.green, C.gold],  ['Sim','Não']);
 
 // ─── TABLE ───────────────────────────────────────────────────────────────────
 function bPapel(v) {
