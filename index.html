@@ -441,7 +441,7 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
        onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
   <span style="display:none;color:white;font-weight:800;font-size:16px;letter-spacing:1px">BSCA</span>
   <div class="header-right">
-    <span class="header-date">Atualizado em 29/06/2026</span>
+    <span class="header-date" id="lastUpdate"></span>
     <span class="header-badge">18 Respostas</span>
   </div>
 </header>
@@ -584,6 +584,16 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
 </footer>
 
 <script>
+// ─── TIMESTAMP ───────────────────────────────────────────────────────────────
+(function() {
+  const now = new Date();
+  const fmt = now.toLocaleString('pt-BR', {
+    day:'2-digit', month:'2-digit', year:'numeric',
+    hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo'
+  });
+  document.getElementById('lastUpdate').textContent = 'Atualizado em ' + fmt;
+})();
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const items = [
   { e:"Sítio Campestre e Barreiro",    r:"Noêmia Karen de Oliveira",  f:"Produtora Rural",          c:10,  n:5,   ev:50000,   m12:150000,   papel:"Relevante",       res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Satisfeito",       org:"Satisfeito",       dt:"26/06" },
