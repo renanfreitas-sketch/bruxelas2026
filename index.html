@@ -7,7 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-/* ── TOKENS ─────────────────────────────────────────────────── */
 :root {
   --green:       #1E3D2F;
   --green-mid:   #2D5E42;
@@ -26,8 +25,6 @@
   --shadow-sm:   0 1px 3px rgba(0,0,0,.07);
   --radius:      12px;
 }
-
-/* ── RESET ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -39,8 +36,6 @@ body {
   line-height: 1.5;
 }
 img { max-width: 100%; display: block; }
-
-/* ── HEADER ─────────────────────────────────────────────────── */
 .site-header {
   background: var(--green);
   padding: 0 32px;
@@ -53,372 +48,142 @@ img { max-width: 100%; display: block; }
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,.18);
 }
-.site-header img.logo {
-  height: 36px;
-  width: auto;
-}
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.header-date {
-  font-size: 12px;
-  color: rgba(255,255,255,.6);
-}
+.site-header img.logo { height: 36px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 12px; }
+.header-date { font-size: 12px; color: rgba(255,255,255,.6); }
 .header-badge {
-  background: var(--gold);
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .4px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  text-transform: uppercase;
+  background: var(--gold); color: var(--green);
+  font-size: 11px; font-weight: 700; letter-spacing: .4px;
+  padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
 }
-
-/* ── HERO ───────────────────────────────────────────────────── */
 .hero {
   background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 55%, #3A7557 100%);
-  padding: 48px 32px 52px;
-  color: white;
-  position: relative;
-  overflow: hidden;
+  padding: 48px 32px 52px; color: white; position: relative; overflow: hidden;
 }
 .hero::before {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
   pointer-events: none;
 }
 .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
 .hero-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
 }
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--gold);
-}
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--gold); }
 .hero h1 {
-  font-size: clamp(22px, 4vw, 34px);
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 10px;
-  letter-spacing: -.3px;
+  font-size: clamp(22px, 4vw, 34px); font-weight: 800;
+  line-height: 1.15; margin-bottom: 10px; letter-spacing: -.3px;
 }
 .hero h1 span { color: var(--gold); }
-.hero p {
-  font-size: 14px;
-  color: rgba(255,255,255,.7);
-  max-width: 520px;
-  line-height: 1.6;
-}
-
-
-/* ── MAIN CONTENT ───────────────────────────────────────────── */
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 36px 24px 48px;
-}
-
-/* ── SECTION LABELS ─────────────────────────────────────────── */
+.hero p { font-size: 14px; color: rgba(255,255,255,.7); max-width: 520px; line-height: 1.6; }
+main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 48px; }
 .section-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--brown);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--brown); display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
 }
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-/* ── KPI GRID ───────────────────────────────────────────────── */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-bottom: 36px;
-}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 36px; }
 .kpi-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px 18px 18px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 18px 18px;
+  position: relative; overflow: hidden; box-shadow: var(--shadow-sm);
   transition: transform .2s, box-shadow .2s;
 }
-.kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .kpi-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--green), var(--green-light));
   border-radius: 0 0 var(--radius) var(--radius);
 }
-.kpi-card:nth-child(4)::after,
-.kpi-card:nth-child(5)::after {
+.kpi-card:nth-child(4)::after, .kpi-card:nth-child(5)::after {
   background: linear-gradient(90deg, var(--brown), var(--gold));
 }
-.kpi-icon {
-  font-size: 20px;
-  margin-bottom: 12px;
-  display: block;
-}
-.kpi-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: .6px;
-  margin-bottom: 8px;
-}
-.kpi-value {
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--green);
-  line-height: 1;
-  letter-spacing: -.5px;
-}
-.kpi-value.brown { color: var(--brown); }
-.kpi-value sup {
-  font-size: 14px;
-  font-weight: 600;
-  vertical-align: super;
-  margin-right: 1px;
-}
-.kpi-sub {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-
-/* ── CARDS ──────────────────────────────────────────────────── */
+.kpi-icon { font-size: 20px; margin-bottom: 12px; display: block; }
+.kpi-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+.kpi-value { font-size: 30px; font-weight: 800; color: var(--green); line-height: 1; letter-spacing: -.5px; }
+.kpi-value.brown { color: var(--brown); font-size: 24px; }
+.kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
 .card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px 22px;
-  box-shadow: var(--shadow-sm);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px; box-shadow: var(--shadow-sm);
 }
 .card-title {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .8px;
-  color: var(--text-2);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--cream-2);
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--text-2); margin-bottom: 20px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--cream-2);
 }
-
-/* ── CHART ROWS ─────────────────────────────────────────────── */
 .chart-row { display: grid; gap: 14px; margin-bottom: 14px; }
 .cols-2  { grid-template-columns: 1fr 1fr; }
 .cols-3  { grid-template-columns: 1fr 1fr 1fr; }
 .cols-21 { grid-template-columns: 2fr 1fr; }
-.cols-12 { grid-template-columns: 1fr 2fr; }
 .cols-1  { grid-template-columns: 1fr; }
-
-/* ── SATISFACTION BARS ──────────────────────────────────────── */
-.sat-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
+.sat-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
 .sat-row:last-child { margin-bottom: 0; }
-.sat-label {
-  font-size: 12px;
-  color: var(--text-2);
-  width: 200px;
-  flex-shrink: 0;
-  font-weight: 500;
-}
+.sat-label { font-size: 12px; color: var(--text-2); width: 200px; flex-shrink: 0; font-weight: 500; }
 .sat-track {
-  flex: 1;
-  height: 24px;
-  background: var(--cream);
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  border: 1px solid var(--border);
+  flex: 1; height: 24px; background: var(--cream); border-radius: 6px;
+  overflow: hidden; display: flex; border: 1px solid var(--border);
 }
 .sat-seg {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: white;
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: white;
   transition: width .5s cubic-bezier(.4,0,.2,1);
 }
-.sat-pct {
-  width: 42px;
-  text-align: right;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--green);
-  flex-shrink: 0;
-}
+.sat-pct { width: 42px; text-align: right; font-size: 12px; font-weight: 700; color: var(--green); flex-shrink: 0; }
 .sat-legend {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--cream-2);
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--cream-2);
 }
-.sat-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--text-muted);
-}
-.sat-legend-dot {
-  width: 10px; height: 10px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
-
-/* ── MINI DONUTS ────────────────────────────────────────────── */
-.mini-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  height: 100%;
-}
+.sat-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
+.sat-legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.mini-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; height: 100%; }
 .mini-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 12px;
-  background: var(--cream);
-  border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 12px; padding: 12px;
+  background: var(--cream); border-radius: 10px;
 }
 .mini-item canvas { width: 90px !important; height: 90px !important; }
-.mini-item p {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-align: center;
-  line-height: 1.4;
-  font-weight: 500;
-}
-
-/* ── BADGE ──────────────────────────────────────────────────── */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-  line-height: 1.4;
-}
+.mini-item p { font-size: 11px; color: var(--text-muted); text-align: center; line-height: 1.4; font-weight: 500; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; line-height: 1.4; }
 .b-green  { background: #D4EDDA; color: #1E6B35; }
 .b-blue   { background: #D1E8F5; color: #1A5E8A; }
 .b-gold   { background: #FEF3CD; color: #7D5A00; }
 .b-red    { background: #FDDEDE; color: #8A1A1A; }
 .b-gray   { background: #F0EDE8; color: #5A5048; }
-
-/* ── TABLE ──────────────────────────────────────────────────── */
 .table-scroll { overflow-x: auto; border-radius: 8px; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12.5px;
-  min-width: 780px;
-}
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 780px; }
 thead th {
-  background: var(--green);
-  color: rgba(255,255,255,.85);
-  font-weight: 600;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .7px;
-  padding: 11px 14px;
-  text-align: left;
-  white-space: nowrap;
+  background: var(--green); color: rgba(255,255,255,.85);
+  font-weight: 600; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .7px; padding: 11px 14px; text-align: left; white-space: nowrap;
 }
 thead th:first-child { border-radius: 8px 0 0 0; }
 thead th:last-child  { border-radius: 0 8px 0 0; }
-tbody tr {
-  border-bottom: 1px solid var(--cream-2);
-  transition: background .15s;
-}
+tbody tr { border-bottom: 1px solid var(--cream-2); transition: background .15s; }
 tbody tr:hover { background: var(--cream); }
-tbody td {
-  padding: 11px 14px;
-  color: var(--text-2);
-  vertical-align: middle;
-}
+tbody td { padding: 11px 14px; color: var(--text-2); vertical-align: middle; }
 tbody td strong { color: var(--text); font-weight: 600; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--green); }
 .company-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-
-/* ── FOOTER ─────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 28px 32px;
-  margin-top: 24px;
+  background: var(--white); border-top: 1px solid var(--border);
+  text-align: center; padding: 28px 32px; margin-top: 24px;
 }
-.site-footer img.logos-bar {
-  max-width: 960px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-.site-footer p {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 14px;
-}
-
-/* ── RESPONSIVE ─────────────────────────────────────────────── */
+.site-footer img.logos-bar { max-width: 960px; width: 100%; height: auto; margin: 0 auto; }
+.site-footer p { font-size: 11px; color: var(--text-muted); margin-top: 14px; }
 @media (max-width: 1100px) {
   .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-  .kpi-card:nth-child(4),
-  .kpi-card:nth-child(5) { grid-column: span 1; }
-  .cols-3  { grid-template-columns: 1fr 1fr; }
+  .cols-3   { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 820px) {
   .site-header { padding: 0 20px; }
   .hero { padding: 36px 20px 40px; }
   main { padding: 24px 16px 40px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .cols-2, .cols-21, .cols-12 { grid-template-columns: 1fr; }
+  .cols-2, .cols-21 { grid-template-columns: 1fr; }
   .cols-3 { grid-template-columns: 1fr; }
   .sat-label { width: 130px; font-size: 11px; }
   .header-date { display: none; }
@@ -427,13 +192,11 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
   .kpi-grid { grid-template-columns: 1fr 1fr; }
   .kpi-value { font-size: 24px; }
   .hero h1 { font-size: 20px; }
-  .mini-pair { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="site-header">
   <img class="logo"
        src="https://www.bsca.com.br/wp-content/uploads/2025/09/Logo_BSCA-white.png"
@@ -441,12 +204,11 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
        onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
   <span style="display:none;color:white;font-weight:800;font-size:16px;letter-spacing:1px">BSCA</span>
   <div class="header-right">
-    <span class="header-date" id="lastUpdate"></span>
-    <span class="header-badge">18 Respostas</span>
+    <span class="header-date">Atualizado em 29/06/2026, 19:01</span>
+    <span class="header-badge">21 Respostas</span>
   </div>
 </header>
 
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Brazil. The Coffee Nation</div>
@@ -455,67 +217,79 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
   </div>
 </section>
 
-<!-- ── MAIN ── -->
 <main>
 
-  <!-- KPIs -->
   <div class="section-label">Indicadores principais</div>
   <div class="kpi-grid">
     <div class="kpi-card">
       <span class="kpi-icon">🏢</span>
       <div class="kpi-label">Empresas respondentes</div>
-      <div class="kpi-value">18</div>
+      <div class="kpi-value">21</div>
       <div class="kpi-sub">formulários recebidos</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">🤝</span>
       <div class="kpi-label">Contatos realizados</div>
-      <div class="kpi-value">775</div>
+      <div class="kpi-value">789</div>
       <div class="kpi-sub">total no evento</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">✨</span>
       <div class="kpi-label">Novos contatos</div>
-      <div class="kpi-value">489</div>
-      <div class="kpi-sub">63% do total</div>
+      <div class="kpi-value">503</div>
+      <div class="kpi-sub">64% do total</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">💰</span>
       <div class="kpi-label">Negócios no evento</div>
-      <div class="kpi-value brown" id="v-evento">—</div>
+      <div class="kpi-value brown">USD 5.0M</div>
       <div class="kpi-sub">em USD · estimativa declarada</div>
     </div>
     <div class="kpi-card">
       <span class="kpi-icon">📈</span>
       <div class="kpi-label">Projeção 12 meses</div>
-      <div class="kpi-value brown" id="v-12m">—</div>
+      <div class="kpi-value brown">USD 76.9M</div>
       <div class="kpi-sub">em USD · estimativa declarada</div>
     </div>
   </div>
 
-  <!-- Row 1: Role + Results -->
   <div class="section-label">Percepção de resultados</div>
   <div class="chart-row cols-2" style="margin-bottom:14px">
     <div class="card">
       <div class="card-title">Papel do Brazil The Coffee Nation</div>
-      <div style="height:220px;position:relative">
-        <canvas id="chartRole"></canvas>
-      </div>
+      <div style="height:220px;position:relative"><canvas id="chartRole"></canvas></div>
     </div>
     <div class="card">
       <div class="card-title">Resultado vs. expectativa pré-evento</div>
-      <div style="height:220px;position:relative">
-        <canvas id="chartExpect"></canvas>
-      </div>
+      <div style="height:220px;position:relative"><canvas id="chartExpect"></canvas></div>
     </div>
   </div>
 
-  <!-- Row 2: Satisfaction -->
   <div class="section-label">Satisfação por categoria</div>
   <div class="chart-row cols-1" style="margin-bottom:14px">
     <div class="card">
       <div class="card-title">Avaliação de satisfação — todas as categorias</div>
-      <div id="satBars"></div>
+      
+        <div class="sat-row">
+          <div class="sat-label">Infraestrutura do evento</div>
+          <div class="sat-track"><div class="sat-seg" style="width:71%;background:#2D5E42">15</div><div class="sat-seg" style="width:24%;background:#4A8C64">5</div><div class="sat-seg" style="width:5%;background:#C9A84C">1</div></div>
+          <div class="sat-pct">95%</div>
+        </div>
+        <div class="sat-row">
+          <div class="sat-label">Atendimento BSCA</div>
+          <div class="sat-track"><div class="sat-seg" style="width:71%;background:#2D5E42">15</div><div class="sat-seg" style="width:29%;background:#4A8C64">6</div></div>
+          <div class="sat-pct">100%</div>
+        </div>
+        <div class="sat-row">
+          <div class="sat-label">Organização do evento</div>
+          <div class="sat-track"><div class="sat-seg" style="width:67%;background:#2D5E42">14</div><div class="sat-seg" style="width:33%;background:#4A8C64">7</div></div>
+          <div class="sat-pct">100%</div>
+        </div>
+        <div class="sat-row">
+          <div class="sat-label">Ambiente de negócios</div>
+          <div class="sat-track"><div class="sat-seg" style="width:57%;background:#2D5E42">12</div><div class="sat-seg" style="width:38%;background:#4A8C64">8</div><div class="sat-seg" style="width:5%;background:#C9A84C">1</div></div>
+          <div class="sat-pct">95%</div>
+        </div>
       <div class="sat-legend">
         <div class="sat-legend-item"><div class="sat-legend-dot" style="background:#2D5E42"></div>Muito Satisfeito</div>
         <div class="sat-legend-item"><div class="sat-legend-dot" style="background:#4A8C64"></div>Satisfeito</div>
@@ -525,14 +299,11 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
     </div>
   </div>
 
-  <!-- Row 3: Contacts + Mini donuts -->
   <div class="section-label">Contatos e indicadores adicionais</div>
   <div class="chart-row cols-21" style="margin-bottom:14px">
     <div class="card">
       <div class="card-title">Tipos de contatos realizados</div>
-      <div style="height:200px;position:relative">
-        <canvas id="chartContacts"></canvas>
-      </div>
+      <div style="height:200px;position:relative"><canvas id="chartContacts"></canvas></div>
     </div>
     <div class="card">
       <div class="card-title">Indicadores qualitativos</div>
@@ -549,7 +320,6 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
     </div>
   </div>
 
-  <!-- Table -->
   <div class="section-label">Empresas participantes</div>
   <div class="card">
     <div class="card-title">Detalhamento por empresa</div>
@@ -568,14 +338,244 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
             <th>Data</th>
           </tr>
         </thead>
-        <tbody id="tBody"></tbody>
+        <tbody>
+        <tr>
+          <td><strong>FVAgro Ltda</strong><div class="company-sub">Lucas Venturim · Socio Diretor Comercial</div></td>
+          <td class="num">18</td>
+          <td class="num">10</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Luiz Roberto Saldanha Rodrigues</strong><div class="company-sub">Luiz Saldanha · Proprietario</div></td>
+          <td class="num">60</td>
+          <td class="num">25</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-green">Muito maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>São Luiz Estate Coffee</strong><div class="company-sub">Ana Cecilia Gondim Velloso Branco · Sócia comercial</div></td>
+          <td class="num">10</td>
+          <td class="num">8</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-red">Abaixo do esperado</span></td>
+          <td><span class="badge b-gold">Indiferente</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Sítio Campestre e Barreiro</strong><div class="company-sub">Noêmia Karen de Oliveira · Produtora Rural</div></td>
+          <td class="num">10</td>
+          <td class="num">5</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">26/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Gram Cerri Comercio, Exportacao e Importacao de Cafe LTDA</strong><div class="company-sub">Fábio Augusto Massini · Proprietário</div></td>
+          <td class="num">17</td>
+          <td class="num">15</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-green">Muito maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Miriam M Aguiar ME</strong><div class="company-sub">Miriam Aguiar · Diretora</div></td>
+          <td class="num">10</td>
+          <td class="num">7</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>COCARIVE</strong><div class="company-sub">Wellington Pereira · Trader</div></td>
+          <td class="num">45</td>
+          <td class="num">8</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Uber Representações Ltda</strong><div class="company-sub">Cláudio Márcio Francisco · Diretor</div></td>
+          <td class="num">30</td>
+          <td class="num">5</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Fazenda Cotrim e D’Alessandro</strong><div class="company-sub">Matheus D’Alessandro · COO</div></td>
+          <td class="num">150</td>
+          <td class="num">120</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Fazendas Dutra Cultivo Importação e Exportação de Café LTDA</strong><div class="company-sub">Victoria dutra · Vendas e exportação</div></td>
+          <td class="num">40</td>
+          <td class="num">15</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Nutrade Comercial Exportadora Ltda</strong><div class="company-sub">Pedro Santos · Gerente de Negocios</div></td>
+          <td class="num">23</td>
+          <td class="num">5</td>
+          <td><span class="badge b-gold">Pouco relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>SMC Comercial e Exportadora de Café</strong><div class="company-sub">Vivian Andrade · Trader</div></td>
+          <td class="num">30</td>
+          <td class="num">10</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-green">Muito maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Companhia Têxtil de Castanhal</strong><div class="company-sub">Flávio Junqueira Smith · Diretor</div></td>
+          <td class="num">20</td>
+          <td class="num">10</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Gram Cerri Comercio, Exportacao e Importacao de Cafe LTDA</strong><div class="company-sub">Lara Cerri Massini · Exportadora</div></td>
+          <td class="num">17</td>
+          <td class="num">15</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Sítio Toca da Onça</strong><div class="company-sub">Luciana Flores Martins Swan · CEO</div></td>
+          <td class="num">200</td>
+          <td class="num">190</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Brown Coffee</strong><div class="company-sub">Renata Vaz · Trader</div></td>
+          <td class="num">15</td>
+          <td class="num">6</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Edson Luiz Ignacio</strong><div class="company-sub">Warley Carlos de Oliveira · Gerente Comercial</div></td>
+          <td class="num">20</td>
+          <td class="num">15</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Exportadora Capricornio Coffees SA</strong><div class="company-sub">Otávio Sandrin · Sales & Operations Manager</div></td>
+          <td class="num">60</td>
+          <td class="num">20</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-green">Muito maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">28/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Gil Cesar de Melo (Produtor Rural)</strong><div class="company-sub">Mafalda Azevo · Trader</div></td>
+          <td class="num">9</td>
+          <td class="num">9</td>
+          <td><span class="badge b-green">Muito relevante</span></td>
+          <td><span class="badge b-blue">Maior que o esperado</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Fazenda santo antonio</strong><div class="company-sub">Pedro · Gerente</div></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td><span class="badge b-gold">Pouco relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-green">Muito Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr>
+        <tr>
+          <td><strong>Studio Torrefacao de cafe</strong><div class="company-sub">Rodrigo Dotto · Socio</div></td>
+          <td class="num">5</td>
+          <td class="num">5</td>
+          <td><span class="badge b-blue">Relevante</span></td>
+          <td><span class="badge b-gold">Igual ao esperado</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td><span class="badge b-blue">Satisfeito</span></td>
+          <td style="color:var(--text-muted);white-space:nowrap">29/06/26</td>
+        </tr></tbody>
       </table>
     </div>
   </div>
 
 </main>
 
-<!-- ── FOOTER ── -->
 <footer class="site-footer">
   <img class="logos-bar"
        src="https://www.bsca.com.br/wp-content/uploads/2026/03/logos-realizacao-promovidos-desktop-2048x193.png"
@@ -584,131 +584,57 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600
 </footer>
 
 <script>
-// ─── TIMESTAMP ───────────────────────────────────────────────────────────────
-(function() {
-  const now = new Date();
-  const fmt = now.toLocaleString('pt-BR', {
-    day:'2-digit', month:'2-digit', year:'numeric',
-    hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo'
-  });
-  document.getElementById('lastUpdate').textContent = 'Atualizado em ' + fmt;
-})();
-
-// ─── DATA ────────────────────────────────────────────────────────────────────
-const items = [
-  { e:"Sítio Campestre e Barreiro",    r:"Noêmia Karen de Oliveira",  f:"Produtora Rural",          c:10,  n:5,   ev:50000,   m12:150000,   papel:"Relevante",       res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Satisfeito",       org:"Satisfeito",       dt:"26/06" },
-  { e:"COCARIVE",                      r:"Wellington Pereira",        f:"Trader",                   c:45,  n:8,   ev:2.54,    m12:13,       papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Miriam M Aguiar ME",            r:"Miriam Aguiar",             f:"Diretora",                 c:10,  n:7,   ev:100,     m12:600,      papel:"Relevante",       res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Gram Cerri (Lara Massini)",     r:"Lara Cerri Massini",        f:"Exportadora",              c:17,  n:15,  ev:320,     m12:38400000, papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Gram Cerri (Fábio Massini)",    r:"Fábio Augusto Massini",     f:"Proprietário",             c:17,  n:15,  ev:320,     m12:3840,     papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Brown Coffee",                  r:"Renata Vaz",                f:"Trader",                   c:15,  n:6,   ev:100000,  m12:200000,   papel:"Relevante",       res:"Maior que o esperado",       inf:"Satisfeito",       atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
-  { e:"FVAgro Ltda",                   r:"Lucas Venturim",            f:"Sócio Diretor Comercial",  c:18,  n:10,  ev:700000,  m12:1500000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Satisfeito",       dt:"28/06" },
-  { e:"Fazendas Dutra",                r:"Victoria Dutra",            f:"Vendas e Exportação",      c:40,  n:15,  ev:1000000, m12:1000000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Sítio Toca da Onça",            r:"Luciana Flores Martins",    f:"CEO",                      c:200, n:190, ev:0,       m12:1800000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Fazenda Cotrim e D'Alessandro", r:"Matheus D'Alessandro",      f:"COO",                      c:150, n:120, ev:1000000, m12:2000000,  papel:"Muito relevante", res:"Igual ao esperado",          inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Capricornio Coffees",           r:"Otávio Sandrin",            f:"Sales & Ops Manager",      c:60,  n:20,  ev:1,       m12:10,       papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"California Coffee Estates",     r:"Luiz Saldanha",             f:"Proprietário",             c:60,  n:25,  ev:500,     m12:4000000,  papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"São Luiz Estate Coffee",        r:"Ana Cecilia Gondim",        f:"Sócia Comercial",          c:10,  n:8,   ev:2000000, m12:5000000,  papel:"Relevante",       res:"Abaixo do esperado",         inf:"Indiferente",      atd:"Satisfeito",       org:"Satisfeito",       dt:"28/06" },
-  { e:"São Pedro Coffee",              r:"Warley Carlos de Oliveira", f:"Gerente Comercial",        c:20,  n:15,  ev:0,       m12:25,       papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"28/06" },
-  { e:"Uber Representações",           r:"Cláudio Márcio Francisco",  f:"Diretor",                  c:30,  n:5,   ev:0,       m12:9000000,  papel:"Muito relevante", res:"Maior que o esperado",       inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"29/06" },
-  { e:"Nutrade Comercial",             r:"Pedro Santos",              f:"Gerente de Negócios",      c:23,  n:5,   ev:0,       m12:2500000,  papel:"Pouco relevante", res:"Igual ao esperado",          inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
-  { e:"SMC Comercial e Exportadora",   r:"Vivian Andrade",            f:"Trader",                   c:30,  n:10,  ev:0,       m12:1000000,  papel:"Muito relevante", res:"Muito maior que o esperado", inf:"Muito Satisfeito", atd:"Muito Satisfeito", org:"Muito Satisfeito", dt:"29/06" },
-  { e:"Cia. Têxtil de Castanhal",      r:"Flávio Junqueira Smith",    f:"Diretor",                  c:20,  n:10,  ev:500,     m12:10000000, papel:"Relevante",       res:"Igual ao esperado",          inf:"Satisfeito",       atd:"Satisfeito",       org:"Satisfeito",       dt:"29/06" },
-];
-
-// ─── KPIs ─────────────────────────────────────────────────────────────────────
-const totalEv  = items.reduce((s,i)=>s+i.ev, 0);
-const total12m = items.reduce((s,i)=>s+i.m12, 0);
-function fmtM(n) {
-  if (n >= 1e6) return `<sup>USD </sup>${(n/1e6).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})}M`;
-  if (n >= 1e3) return `<sup>USD </sup>${(n/1e3).toFixed(0)}K`;
-  return `<sup>USD </sup>${n.toLocaleString('pt-BR')}`;
-}
-document.getElementById('v-evento').innerHTML = fmtM(totalEv);
-document.getElementById('v-12m').innerHTML    = fmtM(total12m);
-
-// ─── CHART DEFAULTS ──────────────────────────────────────────────────────────
 Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
 Chart.defaults.font.size   = 12;
 Chart.defaults.color       = '#7A7A7A';
 Chart.defaults.plugins.legend.labels.boxWidth = 12;
 Chart.defaults.plugins.legend.labels.padding  = 14;
 
-const C = { green:'#2D5E42', greenL:'#4A8C64', gold:'#C9A84C', brown:'#7D5A35', red:'#C0614A', blue:'#4A7FA5', greenD:'#1E3D2F' };
+const C = { green:'#2D5E42', greenL:'#4A8C64', gold:'#C9A84C', brown:'#7D5A35', red:'#C0614A', blue:'#4A7FA5' };
+const N = 21;
 
-// ─── CHART: PAPEL BSCA ───────────────────────────────────────────────────────
 new Chart(document.getElementById('chartRole'), {
   type: 'doughnut',
   data: {
-    labels:   ['Muito relevante','Relevante','Pouco relevante'],
-    datasets: [{ data:[12,5,1], backgroundColor:[C.green,C.blue,C.gold], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
+    labels:   ['Muito relevante','Relevante','Pouco relevante','Irrelevante'],
+    datasets: [{ data:[13, 6, 2, 0], backgroundColor:[C.green,C.blue,C.gold,C.red], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
   },
   options: {
     responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins: {
       legend:  { position:'right' },
-      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/18*100)}%)` } }
+      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/N*100)}%)` } }
     }
   }
 });
 
-// ─── CHART: RESULTADOS ───────────────────────────────────────────────────────
 new Chart(document.getElementById('chartExpect'), {
   type: 'doughnut',
   data: {
-    labels:   ['Muito maior','Maior','Igual','Abaixo'],
-    datasets: [{ data:[4,8,5,1], backgroundColor:[C.green,C.blue,C.gold,C.red], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
+    labels:   ['Muito maior','Maior','Igual','Abaixo','Muito abaixo'],
+    datasets: [{ data:[4, 9, 7, 1, 0], backgroundColor:[C.green,C.blue,C.gold,C.red,'#888'], borderWidth:3, borderColor:'#fff', hoverOffset:6 }]
   },
   options: {
     responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins: {
       legend:  { position:'right' },
-      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/18*100)}%)` } }
+      tooltip: { callbacks:{ label: ctx=>`  ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/N*100)}%)` } }
     }
   }
 });
 
-// ─── SATISFACTION BARS ───────────────────────────────────────────────────────
-const satData = [
-  { label:'Infraestrutura do evento',  ms:14, s:3, i:1, ins:0 },
-  { label:'Atendimento BSCA',          ms:14, s:4, i:0, ins:0 },
-  { label:'Organização do evento',     ms:13, s:5, i:0, ins:0 },
-  { label:'Ambiente de negócios',      ms:11, s:6, i:1, ins:0 },
-];
-const N = 18;
-const satBars = document.getElementById('satBars');
-satData.forEach(d => {
-  const p = v => (v/N*100).toFixed(0);
-  const total = d.ms + d.s + d.i + d.ins;
-  const pct   = (d.ms+d.s)/N*100;
-  satBars.insertAdjacentHTML('beforeend', `
-    <div class="sat-row">
-      <div class="sat-label">${d.label}</div>
-      <div class="sat-track">
-        ${d.ms  ?`<div class="sat-seg" style="width:${p(d.ms)}%;background:${C.green}">${d.ms}</div>`:''}
-        ${d.s   ?`<div class="sat-seg" style="width:${p(d.s)}%;background:${C.greenL}">${d.s}</div>`:''}
-        ${d.i   ?`<div class="sat-seg" style="width:${p(d.i)}%;background:${C.gold}">${d.i}</div>`:''}
-        ${d.ins ?`<div class="sat-seg" style="width:${p(d.ins)}%;background:${C.red}">${d.ins}</div>`:''}
-      </div>
-      <div class="sat-pct">${pct.toFixed(0)}%</div>
-    </div>`);
-});
-
-// ─── CHART: TIPOS DE CONTATO ─────────────────────────────────────────────────
 new Chart(document.getElementById('chartContacts'), {
   type: 'bar',
   data: {
-    labels: ['Compradores Diretos','Distribuidores','Comerciais Exportadoras','Outros','Atacadistas'],
+    labels: ["Compradores Diretos", "Distribuidores", "Comerciais Exportadoras", "Atacadistas", "Outros"],
     datasets: [{
-      data: [15,13,9,2,0],
+      data: [17, 15, 10, 1, 3],
       backgroundColor: [C.green,C.greenL,C.brown,C.gold,'#ddd'],
-      borderRadius: 6,
-      borderSkipped: false,
+      borderRadius: 6, borderSkipped: false,
     }]
   },
   options: {
-    responsive:true, maintainAspectRatio:false,
-    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
     plugins:{ legend:{ display:false } },
     scales:{
       x:{ grid:{ color:'#EDE6D8' }, ticks:{ stepSize:2 } },
@@ -717,7 +643,6 @@ new Chart(document.getElementById('chartContacts'), {
   }
 });
 
-// ─── MINI DONUTS ─────────────────────────────────────────────────────────────
 const mini = (id, data, colors, labels) => new Chart(document.getElementById(id),{
   type:'doughnut',
   data:{ labels, datasets:[{ data, backgroundColor:colors, borderWidth:2, borderColor:'#EDE6D8', hoverOffset:4 }]},
@@ -729,44 +654,8 @@ const mini = (id, data, colors, labels) => new Chart(document.getElementById(id)
     }
   }
 });
-mini('chartStrategy', [7,11], [C.red, C.green],  ['Sim','Não']);
-mini('chartCase',     [14,4], [C.green, C.gold],  ['Sim','Não']);
-
-// ─── TABLE ───────────────────────────────────────────────────────────────────
-function bPapel(v) {
-  if(v==='Muito relevante') return `<span class="badge b-green">${v}</span>`;
-  if(v==='Relevante')       return `<span class="badge b-blue">${v}</span>`;
-  if(v==='Pouco relevante') return `<span class="badge b-gold">${v}</span>`;
-  return `<span class="badge b-gray">${v}</span>`;
-}
-function bRes(v) {
-  if(v.startsWith('Muito maior')) return `<span class="badge b-green">${v}</span>`;
-  if(v.startsWith('Maior'))       return `<span class="badge b-blue">${v}</span>`;
-  if(v.startsWith('Igual'))       return `<span class="badge b-gold">${v}</span>`;
-  if(v.startsWith('Abaixo'))      return `<span class="badge b-red">${v}</span>`;
-  return `<span class="badge b-gray">${v}</span>`;
-}
-function bSat(v) {
-  if(v==='Muito Satisfeito') return `<span class="badge b-green">${v}</span>`;
-  if(v==='Satisfeito')       return `<span class="badge b-blue">${v}</span>`;
-  if(v==='Indiferente')      return `<span class="badge b-gold">${v}</span>`;
-  return `<span class="badge b-red">${v}</span>`;
-}
-const tBody = document.getElementById('tBody');
-items.forEach(d => {
-  tBody.insertAdjacentHTML('beforeend', `
-    <tr>
-      <td><strong>${d.e}</strong><div class="company-sub">${d.r} · ${d.f}</div></td>
-      <td class="num">${d.c}</td>
-      <td class="num">${d.n}</td>
-      <td>${bPapel(d.papel)}</td>
-      <td>${bRes(d.res)}</td>
-      <td>${bSat(d.inf)}</td>
-      <td>${bSat(d.atd)}</td>
-      <td>${bSat(d.org)}</td>
-      <td style="color:var(--text-muted);white-space:nowrap">${d.dt}/26</td>
-    </tr>`);
-});
+mini('chartStrategy', [7,14], [C.red, C.green],  ['Sim','Não']);
+mini('chartCase',     [16,5], [C.green, C.gold],  ['Sim','Não']);
 </script>
 </body>
 </html>
