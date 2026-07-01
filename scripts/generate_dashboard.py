@@ -32,6 +32,9 @@ COL_ESTRATEGIA= "single_selectbft1eym"
 COL_CASE      = "single_selectivw9m55"
 COL_CONTTYPE  = "multi_selectccnwx71v"
 COL_DATE      = "date4pfzxy2k"
+COL_SAT       = "long_textsn2j4f5n"
+COL_APEX      = "long_textq0q9r47l"
+COL_CITEQUAIS = "short_textkmog7yzv"
 
 # ── FETCH FROM MONDAY ─────────────────────────────────────────────────────────
 def fetch_items():
@@ -51,7 +54,8 @@ def fetch_items():
                   "{COL_CONTATOS}", "{COL_NOVOS}", "{COL_EV}", "{COL_12M}",
                   "{COL_PAPEL}", "{COL_RESULT}", "{COL_INFRA}", "{COL_ATD}",
                   "{COL_ORG}", "{COL_NEGOCIO}", "{COL_ESTRATEGIA}", "{COL_CASE}",
-                  "{COL_CONTTYPE}", "{COL_DATE}"
+                  "{COL_CONTTYPE}", "{COL_DATE}",
+                  "{COL_SAT}", "{COL_APEX}", "{COL_CITEQUAIS}"
                 ]) {{ id text value }}
               }}
             }}
@@ -170,6 +174,9 @@ def build_html(items_raw):
             "case":  col(it, COL_CASE),
             "types": col(it, COL_CONTTYPE),
             "dt":    date_short(col(it, COL_DATE)),
+            "sat":   col(it, COL_SAT) or "",
+            "apex":  col(it, COL_APEX) or "",
+            "cq":    col(it, COL_CITEQUAIS) or "",
         })
 
     N         = len(items)
@@ -214,6 +221,47 @@ def build_html(items_raw):
             if t in type_labels:
                 type_cnt[t] += 1
     type_data = [type_cnt.get(l, 0) for l in type_labels]
+
+    # ── Word cloud: "Cite quais:" ────────────────────────────────────────────
+    import re as _re
+    _stopwords = {"de","a","o","e","que","em","do","da","os","as","um","uma",
+                  "para","com","por","no","na","se","é","ao","das","dos","mais",
+                  "mas","não","foi","são","pelo","pela","isso","esta","esse",
+                  "este","sua","seu","suas","seus","tem","nos","nas","ter","ou",
+                  "até","já","como","quando","após","entre","sobre","the","and"}
+    _wfreq = Counter()
+    for d in items:
+        cq = d["cq"].strip()
+        if cq:
+            for w in _re.split(r'[\s,;./\-\n]+', cq.lower()):
+                w = w.strip('.,;:!?"\'()')
+                if len(w) > 2 and w not in _stopwords:
+                    _wfreq[w] += 1
+    wc_data = [[w, max(cnt * 12, 14)] for w, cnt in _wfreq.most_common(50)]
+
+    # ── Qualitative text cards ───────────────────────────────────────────────
+    def esc(s):
+        return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
+
+    sat_cards_html = ""
+    for d in items:
+        txt = d["sat"].strip()
+        if txt and txt not in (".", "-", ""):
+            sat_cards_html += f"""
+        <div class="qual-card">
+          <div class="qual-company">{esc(d['e'])}</div>
+          <div class="qual-text">{esc(txt)}</div>
+        </div>"""
+
+    apex_cards_html = ""
+    for d in items:
+        txt = d["apex"].strip()
+        if txt and txt not in (".", "-", ""):
+            apex_cards_html += f"""
+        <div class="qual-card apex-card">
+          <div class="qual-company">{esc(d['e'])}</div>
+          <div class="qual-text">{esc(txt)}</div>
+        </div>"""
 
     # ── Mini donuts ──────────────────────────────────────────────────────────
     estr_sim = sum(1 for d in items if "Sim" in d["estr"])
@@ -293,6 +341,7 @@ def build_html(items_raw):
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Relatório de Avaliação – World of Coffee Bruxelas | BSCA</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {{
@@ -481,6 +530,26 @@ td.num {{ text-align: right; font-variant-numeric: tabular-nums; font-weight: 60
   .kpi-value {{ font-size: 24px; }}
   .hero h1 {{ font-size: 20px; }}
 }}
+/* ── Word cloud ─────────────────────────────────────────── */
+#wordCloudCanvas {{ width:100%!important; height:220px!important; }}
+/* ── Qualitative cards ──────────────────────────────────── */
+.qual-grid {{
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px; margin-top: 4px;
+}}
+.qual-card {{
+  background: var(--cream); border-radius: 10px; padding: 14px 16px;
+  border-left: 4px solid var(--green);
+}}
+.apex-card {{ border-left-color: var(--gold); }}
+.qual-company {{
+  font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase;
+  letter-spacing: .5px; margin-bottom: 6px;
+}}
+.apex-card .qual-company {{ color: var(--brown); }}
+.qual-text {{
+  font-size: 12.5px; color: var(--text-2); line-height: 1.55; white-space: pre-wrap;
+}}
 </style>
 </head>
 <body>
@@ -572,6 +641,10 @@ td.num {{ text-align: right; font-variant-numeric: tabular-nums; font-weight: 60
     <div class="card">
       <div class="card-title">Tipos de contatos realizados</div>
       <div style="height:200px;position:relative"><canvas id="chartContacts"></canvas></div>
+      <div style="margin-top:16px">
+        <div class="card-title" style="margin-bottom:8px">Outros tipos citados — nuvem de palavras</div>
+        <canvas id="wordCloudCanvas" height="220"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-title">Indicadores qualitativos</div>
@@ -586,6 +659,16 @@ td.num {{ text-align: right; font-variant-numeric: tabular-nums; font-weight: 60
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="section-label">Vozes das empresas</div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-title">Principais motivos de satisfação e insatisfação</div>
+    <div class="qual-grid">{sat_cards_html}</div>
+  </div>
+  <div class="card" style="margin-bottom:36px">
+    <div class="card-title">Ações Apex-Brasil sugeridas pelas empresas</div>
+    <div class="qual-grid">{apex_cards_html}</div>
   </div>
 
   <div class="section-label">Empresas participantes</div>
@@ -693,6 +776,33 @@ const mini = (id, data, colors, labels) => new Chart(document.getElementById(id)
 }});
 mini('chartStrategy', [{estr_sim},{estr_nao}], [C.red, C.green],  ['Sim','Não']);
 mini('chartCase',     [{case_sim},{case_nao}], [C.green, C.gold],  ['Sim','Não']);
+
+// ── Word cloud ─────────────────────────────────────────────────────────────
+const wcData = {json.dumps(wc_data, ensure_ascii=False)};
+if (wcData.length > 0 && typeof WordCloud !== 'undefined') {{
+  const wcCanvas = document.getElementById('wordCloudCanvas');
+  wcCanvas.width  = wcCanvas.parentElement.offsetWidth || 500;
+  wcCanvas.height = 220;
+  WordCloud(wcCanvas, {{
+    list: wcData,
+    gridSize: 6,
+    weightFactor: 1.4,
+    fontFamily: "'Inter', sans-serif",
+    color: (word, weight) => {{
+      const palette = ['#1E3D2F','#2D5E42','#4A8C64','#C9A84C','#7D5A35','#4A7FA5'];
+      return palette[Math.floor(Math.random() * palette.length)];
+    }},
+    rotateRatio: 0.3,
+    rotationSteps: 2,
+    backgroundColor: '#F8F4EE',
+    drawOutOfBound: false,
+    shrinkToFit: true,
+  }});
+}} else if (wcData.length === 0) {{
+  const el = document.getElementById('wordCloudCanvas');
+  el.style.display = 'none';
+  el.insertAdjacentHTML('afterend','<p style="font-size:12px;color:#aaa;padding:8px 0">Nenhuma resposta registrada.</p>');
+}}
 </script>
 </body>
 </html>"""
